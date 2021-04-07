@@ -1,0 +1,8 @@
+../data/beatmaps/Aeonian/Zyzyx\ -\ Aeonian\ \[ECut\]\ \(Evgerable\)\ \[Ecstasy\].osu
+../data/beatmaps/Aeonian/Zyzyx\ -\ Aeonian\ \[ECut\]\ \(Evgerable\)\ \[Lite\ Ecstasy\].osu
+../data/beatmaps/Aeonian/Zyzyx\ -\ Aeonian\ \[ECut\]\ \(Evgerable\)\ \[Stunning\ Ecstasy\].osu
+../data/beatmaps/Aeonian/lite.osu
+../data/beatmaps/Aeonian/stunning.osu
+../data/beatmaps/AfterlifeDabinRemix/memories.osu
+../data/beatmaps/Astronomia/normal.osu
+../data/beatmaps/Astronomia/hard.osu

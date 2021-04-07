@@ -1,0 +1,67 @@
+osu file format v14
+
+[General]
+AudioFilename: audio.mp3
+AudioLeadIn: 0
+PreviewTime: 112096
+Countdown: 0
+SampleSet: Soft
+StackLeniency: 0.4
+Mode: 0
+LetterboxInBreaks: 0
+WidescreenStoryboard: 0
+
+[Editor]
+Bookmarks: 5429,26763,48096,69429,90763,112096,176096,197429,218763,346763,368096
+DistanceSpacing: 0.3
+BeatDivisor: 4
+GridSize: 32
+TimelineZoom: 2.899999
+
+[Metadata]
+Title:Afterlife (Dabin Remix)
+TitleUnicode:Afterlife (Dabin Remix)
+Artist:Illenium ft. Echos
+ArtistUnicode:Illenium ft. Echos
+Creator:_orange
+Version:Memories
+Source:
+Tags:edm electronic ashes seeking blue
+BeatmapID:1507223
+BeatmapSetID:713161
+
+[Difficulty]
+HPDrainRate:6
+CircleSize:4.2
+OverallDifficulty:8
+ApproachRate:9.3
+SliderMultiplier:2
+SliderTickRate:1
+
+[Events]
+//Background and Video events
+0,0,"bg.jpg",0,0
+//Break Periods
+2,69629,88875
+2,176296,195542
+2,261629,280875
+//Storyboard Layer 0 (Background)
+//Storyboard Layer 1 (Fail)
+//Storyboard Layer 2 (Pass)
+//Storyboard Layer 3 (Foreground)
+//Storyboard Sound Samples
+
+[TimingPoints]
+5430,333.333333333333,4,2,2,70,1,0
+5430,-100,4,2,2,70,0,0
+48096,-133.333333333333,4,2,2,70,0,0
+
+
+[Colours]
+Combo1 : 240,58,32
+Combo2 : 13,74,236
+Combo3 : 120,9,187
+Combo4 : 236,105,9
+
+[HitObjects]
+
