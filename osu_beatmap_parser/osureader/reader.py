@@ -1,6 +1,6 @@
-from osureader.errors import CouldNotParseBeatmapException
+from osu_beatmap_parser.osureader.errors import CouldNotParseBeatmapException
 from typing import Tuple, Union
-import osureader.objects
+import osu_beatmap_parser.osureader.objects
 import json
 import re
 

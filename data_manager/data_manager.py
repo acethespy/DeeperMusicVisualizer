@@ -1,6 +1,6 @@
 import sys, os
-from osureader.reader import BeatmapParser
-from osureader.beatmap import Beatmap
+from osu_beatmap_parser.osureader.reader import BeatmapParser
+from osu_beatmap_parser.osureader.beatmap import Beatmap
 import numpy as np
 
 class DataManager:
