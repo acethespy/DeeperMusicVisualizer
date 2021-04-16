@@ -318,8 +318,8 @@ class LucidSonicDream:
 
   def generate_vectors(self):
     '''Generates noise and class vectors as inputs for each frame'''
-    OSU_MOTION_REACT = 0.2
-    OSU_PULSE_REACT = 0.8
+    OSU_MOTION_REACT = 0.1
+    OSU_PULSE_REACT = 0.5
     PULSE_SMOOTH = 0.75
     MOTION_SMOOTH = 0.25
     classes = self.classes

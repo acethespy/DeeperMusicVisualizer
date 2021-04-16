@@ -116,10 +116,40 @@ def extract_osu(osu_file, result_length, frame_duration, sr):
     #time: time in ms
     # ms = (i * frame_duration)/sr * 1000
     return round(time / 1000 * sr / frame_duration)
-
+  print(result_length, frame_duration, sr)
+  print(to_frames(100))
+  print(round(100 / 1000 * sr / frame_duration))
   def slider_duration(length, multiplier, beat_length):
     return length / (multiplier * 100) * beat_length
 
+  if '.npy' in osu_file:
+    data = np.load(osu_file, allow_pickle=True)
+    pulse = np.zeros(result_length)
+    motion = np.zeros(result_length)
+    PULSE_DURATION = 100 #ms
+    OSU_PULSE_REACT = 1.0
+    OSU_MOTION_REACT = 1.0
+    pulse_vec = np.ones(to_frames(PULSE_DURATION)) * OSU_PULSE_REACT
+    print(len(pulse_vec))
+    for event in data: #event = [time in ms, 0hit or 1slide, duration in ms]
+      if event[1] == 0:
+        #hit
+        start = to_frames(event[0]) - len(pulse_vec)//2
+        if start+len(pulse_vec) > len(pulse):
+          print(f'last_time:{event[0]}')
+          break;
+        print(len(pulse_vec))
+        pulse[start:start+len(pulse_vec)] += pulse_vec
+      else:
+        #slide
+        start = to_frames(event[0])
+        motion_vec = OSU_MOTION_REACT * np.ones(to_frames(event[2]))
+        print(f'motion_frames:{len(motion_vec)}')
+        if start + len(motion_vec) > len(motion):
+          print(f'last_time:{event[0]}')
+          break;
+        motion[start:start+len(motion_vec)] += motion_vec
+    return pulse, motion
   beatmap, _ = DM.get_beatmap(osu_file)
   # (len(self.spec_norm_pulse) * frame_duration + 1)/sr
 
