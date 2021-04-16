@@ -47,6 +47,6 @@ def get_timed_osu_file(music_path, input_filename = "assets/template.osu", outpu
     with open(output_filename, 'w', encoding="utf8") as osu_output:
         osu_output.write(osu_text)
 
-    copy(music_path, "./audio.mp3")
+    #copy(music_path, "./audio.mp3")
 
     return output_filename
