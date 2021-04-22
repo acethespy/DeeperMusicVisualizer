@@ -49,6 +49,7 @@ def step1_load_maps():
     for k, mname in enumerate(results):
         try:
             start = time.time()
+            divisor=8
             read_and_save_osu_file(mname.strip(), filename=os.path.join(mapdata_path, str(k)), divisor=divisor);
             end = time.time()
             print("Map data #" + str(k) + " saved! time = " + str(end - start) + " secs");

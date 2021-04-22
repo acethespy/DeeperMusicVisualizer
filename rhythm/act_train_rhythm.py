@@ -13,7 +13,7 @@ import os, re
 root = "mapdata/";
 
 # set divisor
-divisor = 4;
+divisor = 8;
 
 # this is a global variable!
 time_interval = 16;
@@ -155,6 +155,7 @@ def set_param_fallback(PARAMS):
         divisor = PARAMS["divisor"];
     except:
         divisor = 4;
+    print("divisor", divisor)
     if "train_epochs" not in PARAMS:
         PARAMS["train_epochs"] = 16;
     if "train_epochs_many_maps" not in PARAMS:
@@ -180,6 +181,7 @@ def build_model():
     Hyperparameters in the middle are tuned to make sure it runs smoothly on my machine.
     You can try changing them in the middle if it achieves better result.
     """
+    print("bidirectional LSTM-128")
     train_shape, div_shape, label_shape = get_data_shape();
     model1 = keras.Sequential([
         keras.layers.TimeDistributed(keras.layers.Conv2D(16, (2, 2),
@@ -188,17 +190,24 @@ def build_model():
         keras.layers.TimeDistributed(keras.layers.MaxPool2D((1, 2),
                            data_format='channels_last')),
         keras.layers.TimeDistributed(keras.layers.Activation(activation=tf.nn.relu)),
+        #keras.layers.TimeDistributed(tf.keras.layers.BatchNormalization()),
+        
         keras.layers.TimeDistributed(keras.layers.Dropout(0.3)),
         keras.layers.TimeDistributed(keras.layers.Conv2D(16, (2, 3),
                            data_format='channels_last')),
         keras.layers.TimeDistributed(keras.layers.MaxPool2D((1, 2),
                            data_format='channels_last')),
+       
         keras.layers.TimeDistributed(keras.layers.Activation(activation=tf.nn.relu)),
+        #keras.layers.TimeDistributed(tf.keras.layers.BatchNormalization()),
+        
         keras.layers.TimeDistributed(keras.layers.Dropout(0.3)),
         keras.layers.TimeDistributed(keras.layers.Flatten()),
-        keras.layers.LSTM(64, activation=tf.nn.tanh, return_sequences=True)
+        keras.layers.Bidirectional(keras.layers.LSTM(128, activation=tf.nn.tanh, return_sequences=True))
+        #keras.layers.LSTM(64, activation=tf.nn.tanh, return_sequences=True)
+      
     ])
-
+ 
     input2 = keras.layers.InputLayer(input_shape=(time_interval, div_shape[1]));
 
     conc = keras.layers.concatenate([model1.output, input2.output]);
@@ -331,10 +340,10 @@ def step2_evaluate(model):
         print("{} auc score: {}".format(k, roc_auc_score(actual_result[:, i], pred_result[:, i])))
 
 
-def step2_save(model):
+def step2_save(model,name):
     tf.keras.models.save_model(
         model,
-        "saved_rhythm_model",
+        name,
         overwrite=True,
         include_optimizer=True,
         save_format="h5"
