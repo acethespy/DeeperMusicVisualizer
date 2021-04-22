@@ -171,7 +171,7 @@ def extract_osu(osu_file, result_length, frame_duration, sr):
   timing_object = timing_objects[0]
 
   for hit_object in hit_objects:
-    if len(timing_objects) > 0 and hit_object.time >= timing_objects[0].time:
+    while len(timing_objects) > 0 and hit_object.time >= timing_objects[0].time:
       temp = timing_objects.pop(0)
       if temp.uninherited == 1:
         timing_object = temp
@@ -181,7 +181,7 @@ def extract_osu(osu_file, result_length, frame_duration, sr):
     if HitObjectType.SLIDER in hit_object.type:
       start = to_frames(hit_object.time)
       motion_vec = OSU_MOTION_REACT * np.ones(to_frames(slider_duration(float(hit_object.length), slider_multiplier_multiplier * slider_multiplier, timing_object.beat_length)))
-      print(f'motion_frames:{len(motion_vec)}')
+      print(f'motion_frames:{len(motion_vec)},time:{hit_object.time}')
       if start + len(motion_vec) > len(motion):
         print(f'last_time:{hit_object.time}')
         break;
