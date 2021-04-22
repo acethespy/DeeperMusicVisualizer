@@ -9,7 +9,7 @@ from tensorflow import keras
 import numpy as np
 import os, re, json
 
-divisor = 4;
+divisor = 8;
 
 def read_npz(fn):
     with np.load(fn) as data:
@@ -87,6 +87,7 @@ def step5_predict_notes(model, npz, params):
     # Favor sliders a little
     preds[:, 2] += slider_favor;
     divs = div_data2.reshape(-1, div_data2.shape[2]);
+    print(divs.shape,div_data2.shape, len(divisor_favor))
     margin = np.sum([divisor_favor[k] * divs[:, k] for k in range(0, divisor)]);
 
     preds[:, 0] += margin;
