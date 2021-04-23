@@ -1,5 +1,27 @@
-../data/beatmaps/Faded/Alan Walker - Faded (Astarte) [HC's Hard].osu
-../data/beatmaps/Faded/Copy of Alan Walker - Faded (Astarte) [HC's Hard].osu
-../data/beatmaps/Faded/Copy of Copy of Alan Walker - Faded (Astarte) [HC's Hard].osu
-../data/beatmaps/Faded/Copy of Copy of Copy of Alan Walker - Faded (Astarte) [HC's Hard].osu
-../data/beatmaps/Faded/Copy of Copy of Copy of Copy of Alan Walker - Faded (Astarte) [HC's Hard].osu
+
+/content/drive/MyDrive/Cal/Colab/DeepMusicVisualizer/data/beatmaps_57/Aeonian/beatmap.osu
+/content/drive/MyDrive/Cal/Colab/DeepMusicVisualizer/data/beatmaps_57/BrainPower/beatmap.osu
+/content/drive/MyDrive/Cal/Colab/DeepMusicVisualizer/data/beatmaps_57/Earthquake/beatmap.osu
+/content/drive/MyDrive/Cal/Colab/DeepMusicVisualizer/data/beatmaps_57/Faded/beatmap.osu
+/content/drive/MyDrive/Cal/Colab/DeepMusicVisualizer/data/beatmaps_57/Astronomia/beatmap.osu
+/content/drive/MyDrive/Cal/Colab/DeepMusicVisualizer/data/beatmaps_57/MarbleSoda/beatmap.osu
+/content/drive/MyDrive/Cal/Colab/DeepMusicVisualizer/data/beatmaps_57/GiveItUp/beatmap.osu
+/content/drive/MyDrive/Cal/Colab/DeepMusicVisualizer/data/beatmaps_57/Griztronics/beatmap.osu
+/content/drive/MyDrive/Cal/Colab/DeepMusicVisualizer/data/beatmaps_57/Goodbye/beatmap.osu
+/content/drive/MyDrive/Cal/Colab/DeepMusicVisualizer/data/beatmaps_57/MyLove/beatmap.osu
+/content/drive/MyDrive/Cal/Colab/DeepMusicVisualizer/data/beatmaps_57/Nightlight/beatmap.osu
+/content/drive/MyDrive/Cal/Colab/DeepMusicVisualizer/data/beatmaps_57/MonsterDotEXE/beatmap.osu
+/content/drive/MyDrive/Cal/Colab/DeepMusicVisualizer/data/beatmaps_57/PopStars/beatmap.osu
+/content/drive/MyDrive/Cal/Colab/DeepMusicVisualizer/data/beatmaps_57/Highscore/beatmap.osu
+/content/drive/MyDrive/Cal/Colab/DeepMusicVisualizer/data/beatmaps_57/SAD/beatmap.osu
+/content/drive/MyDrive/Cal/Colab/DeepMusicVisualizer/data/beatmaps_57/TakeAHint/beatmap.osu
+/content/drive/MyDrive/Cal/Colab/DeepMusicVisualizer/data/beatmaps_57/EDM Pack/beatmap.osu
+/content/drive/MyDrive/Cal/Colab/DeepMusicVisualizer/data/beatmaps_57/Mayday/beatmap.osu
+/content/drive/MyDrive/Cal/Colab/DeepMusicVisualizer/data/beatmaps_57/WaitingForLove/beatmap.osu
+/content/drive/MyDrive/Cal/Colab/DeepMusicVisualizer/data/beatmaps_57/WakeMeUp/beatmap.osu
+/content/drive/MyDrive/Cal/Colab/DeepMusicVisualizer/data/beatmaps_57/Levels/beatmap.osu
+/content/drive/MyDrive/Cal/Colab/DeepMusicVisualizer/data/beatmaps_57/SingMeToSleep/beatmap.osu
+/content/drive/MyDrive/Cal/Colab/DeepMusicVisualizer/data/beatmaps_57/BOOMBAYAH/beatmap.osu
+/content/drive/MyDrive/Cal/Colab/DeepMusicVisualizer/data/beatmaps_57/AllFallsDown/beatmap.osu
+/content/drive/MyDrive/Cal/Colab/DeepMusicVisualizer/data/beatmaps_57/Fractures/beatmap.osu
+/content/drive/MyDrive/Cal/Colab/DeepMusicVisualizer/data/beatmaps_57/Sleepwalker/beatmap.osu

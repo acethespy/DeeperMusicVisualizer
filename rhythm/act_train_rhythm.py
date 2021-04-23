@@ -111,6 +111,25 @@ def get_data_shape():
     print("cannot find npz!! using default shape");
     return (-1, 7, 32, 2), (-1, 3 + divisor), (-1, 5);
 
+def read_some_npzs_and_preprocess_separate_songs(npz_list):
+    train_shape, div_shape, label_shape = get_data_shape();
+    td_list = []
+    dd_list = []
+    tl_list = []
+    for fp in npz_list:
+        if fp.endswith(".npz"):
+            _td, _dd, _tl = read_npz(fp);
+            if _td.shape[1:] != train_shape[1:]:
+                print("Warning: something wrong found in {}! shape = {}".format(fp, _td.shape));
+                continue;
+            train_data2, div_data2, train_labels2 = preprocess_npzs(_td, _dd, _tl);
+            
+            td_list.append(train_data2);
+            dd_list.append(div_data2);
+            tl_list.append(train_labels2);
+            
+    return td_list, dd_list, tl_list
+    
 def read_some_npzs_and_preprocess(npz_list):
   	#concatenates ALL (?) npz files into one large training list
     train_shape, div_shape, label_shape = get_data_shape();
@@ -139,12 +158,26 @@ def train_test_split(train_data2, div_data2, train_labels2, test_split_count=233
     Note that there is no randomization. It doesn't really matter here, but in other machine learning it's obligatory.
     Requires at least 233 rows of data or it will throw an error. (Tick count/10, around 1.5-2 full length maps)
     """
-    new_train_data = train_data2[:-test_split_count];
-    new_div_data = div_data2[:-test_split_count];
-    new_train_labels = train_labels2[:-test_split_count];
-    test_data = train_data2[-test_split_count:];
-    test_div_data = div_data2[-test_split_count:];
-    test_labels = train_labels2[-test_split_count:];
+    indices = np.arange(len(train_data2))
+    np.random.shuffle(indices)
+    train_indices = indices[:-test_split_count]
+    test_indices = indices[-test_split_count:]
+    
+    new_train_data = train_data2[train_indices];
+    new_div_data = div_data2[train_indices];
+    new_train_labels = train_labels2[train_indices];
+    test_data = train_data2[test_indices];
+    test_div_data = div_data2[test_indices];
+    test_labels = train_labels2[test_indices];
+    
+    assert len(train_indices) + len(test_indices) == len(train_data2)
+    
+    # new_train_data = train_data2[:-test_split_count];
+    # new_div_data = div_data2[:-test_split_count];
+    # new_train_labels = train_labels2[:-test_split_count];
+    # test_data = train_data2[-test_split_count:];
+    # test_div_data = div_data2[-test_split_count:];
+    # test_labels = train_labels2[-test_split_count:];
     return (new_train_data, new_div_data, new_train_labels), (test_data, test_div_data, test_labels);
 
 # (train_data_unfiltered, div_data_unfiltered, train_labels_unfiltered) = read_all_npzs();
@@ -230,6 +263,17 @@ def build_model():
     return final_model
 
 
+def get_baseline_metrics(npz_list):
+    train_data, div_data, train_labels = read_some_npzs_and_preprocess_separate_songs(npz_list)
+    losses = []
+    maes = []
+    for song_labels in train_labels:
+        baseline_labels = np.mean(song_labels, axis=0)
+        diffs = song_labels - baseline_labels[np.newaxis, :, :]
+        losses.append(np.mean(diffs * diffs))
+        maes.append(np.mean(np.abs(diffs)))
+    return np.mean(losses), np.mean(maes)
+
 def plot_history(history):
     plt.figure()
     plt.xlabel('Epoch')
@@ -242,6 +286,10 @@ def plot_history(history):
            label='Train Loss')
     plt.plot(history.epoch, np.array(history.history['val_loss']),
            label = 'Val Loss')
+    plt.plot(history.epoch, np.ones(len(history.epoch)) * (history.history['base_loss']),
+           label = 'Base Loss')
+    plt.plot(history.epoch, np.ones(len(history.epoch)) * (history.history['base_mae']),
+           label = 'Base MAE')
     plt.legend()
     plt.show()
 
@@ -274,10 +322,9 @@ def step2_train_model(model, PARAMS):
     # if there is too much data, reduce epoch count (hmm)
     if len(train_file_list) >= too_many_maps_threshold:
         EPOCHS = PARAMS["train_epochs_many_maps"]
-
+    
     if len(train_file_list) < too_many_maps_threshold:
         train_data2, div_data2, train_labels2 = read_some_npzs_and_preprocess(train_file_list);
-
         # Split some test data out
         (new_train_data, new_div_data, new_train_labels), (test_data, test_div_data, test_labels) = train_test_split(train_data2, div_data2, train_labels2);
         print("final train labels AFTER validation split",new_train_labels.shape)
@@ -286,7 +333,9 @@ def step2_train_model(model, PARAMS):
         history = model.fit([new_train_data, new_div_data], new_train_labels, epochs=EPOCHS,
                             validation_split=0.2, verbose=0, batch_size=batch_size,
                             callbacks=[early_stop, PrintDot()])
-
+        base_mse, base_mae = get_baseline_metrics(train_file_list)
+        history.history['base_loss'] = base_mse
+        history.history['base_mae'] = base_mae
         # For development! may cause bug in some environment.
         if PARAMS["plot_history"]:
             plot_history(history)
