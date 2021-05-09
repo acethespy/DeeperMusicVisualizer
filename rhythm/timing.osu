@@ -1,0 +1,62 @@
+osu file format v14
+
+[General]
+AudioFilename: audio.mp3
+AudioLeadIn: 0
+PreviewTime: -1
+Countdown: 0
+SampleSet: Soft
+StackLeniency: 0.5
+Mode: 0
+LetterboxInBreaks: 0
+WidescreenStoryboard: 1
+
+[Editor]
+DistanceSpacing: 1.0
+BeatDivisor: 4
+GridSize: 8
+TimelineZoom: 1
+
+[Metadata]
+Title:audio
+TitleUnicode:audio
+Artist:unknown
+ArtistUnicode:unknown
+Creator:osumapper
+Version:Advanced
+Source:
+Tags:
+
+[Difficulty]
+HPDrainRate:1.6
+CircleSize:3.3
+OverallDifficulty:6.9
+ApproachRate:7.9
+SliderMultiplier:2.3
+SliderTickRate:1
+
+[Events]
+//Background and Video events
+//Break Periods
+//Storyboard Layer 0 (Background)
+//Storyboard Layer 1 (Fail)
+//Storyboard Layer 2 (Pass)
+//Storyboard Layer 3 (Foreground)
+//Storyboard Layer 4 (Overlay)
+//Storyboard Sound Samples
+
+[TimingPoints]
+452,484.12880552603406,4,2,1,100,1,0
+
+
+[Colours]
+Combo1 : 220,141,255
+Combo2 : 158,68,255
+Combo3 : 62,255,243
+Combo4 : 122,197,255
+Combo5 : 217,129,255
+Combo6 : 255,143,222
+Combo7 : 134,245,255
+Combo8 : 255,57,140
+
+[HitObjects]

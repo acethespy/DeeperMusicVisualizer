@@ -1,0 +1,60 @@
+osu file format v14
+
+[General]
+AudioFilename: audio.mp3
+AudioLeadIn: 0
+PreviewTime: -1
+Countdown: 0
+SampleSet: Soft
+StackLeniency: 0.5
+Mode: 0
+LetterboxInBreaks: 0
+WidescreenStoryboard: 1
+
+[Editor]
+DistanceSpacing: 1.0
+BeatDivisor: 4
+GridSize: 8
+TimelineZoom: 1
+
+[Metadata]
+Title:Faded
+TitleUnicode:Faded
+Artist:Alan Walker
+ArtistUnicode:Alan Walker
+Creator:osumapper
+Version:Expert
+Source:
+Tags:
+
+[Difficulty]
+HPDrainRate:2.5
+CircleSize:4.9
+OverallDifficulty:6.4
+ApproachRate:8.2
+SliderMultiplier:1.5
+SliderTickRate:1
+
+[Events]
+//Background and Video events
+//Break Periods
+//Storyboard Layer 0 (Background)
+//Storyboard Layer 1 (Fail)
+//Storyboard Layer 2 (Pass)
+//Storyboard Layer 3 (Foreground)
+//Storyboard Layer 4 (Overlay)
+//Storyboard Sound Samples
+
+[TimingPoints]
+130,666.6666666666666,4,2,1,100,1,0
+
+
+[Colours]
+Combo1 : 152,255,66
+Combo2 : 62,57,255
+Combo3 : 144,141,255
+Combo4 : 125,255,131
+Combo5 : 255,89,77
+Combo6 : 139,255,225
+
+[HitObjects]
